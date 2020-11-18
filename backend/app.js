@@ -11,7 +11,9 @@ app.use(bodyParser.json())
 
 // Import Routes
 const postsRoute = require('./routes/posts')
+//const usersRoute = require('./routes/users')
 app.use('/posts', postsRoute)
+//app.use('/users', usersRoute)
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', (req, res) => {
@@ -20,7 +22,7 @@ app.get('/', (req, res) => {
 
 mongoose.connect(
   process.env.DB_CONNECTION,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('connected to DB')
 )
 

@@ -12,7 +12,7 @@ export default function Home(){
 
     return (
         <div className="home-container">
-            <span>Welcome :)!</span>
+            <section className="header">Brito Variedades</section>
             <div className="products">
                 <ul>
                     {posts.map(post => (
