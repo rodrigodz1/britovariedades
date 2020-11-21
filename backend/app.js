@@ -5,19 +5,26 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 require('dotenv/config')
 
+// SETTING EJS
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+
 // Middlewares
 app.use(cors())
 app.use(bodyParser.json())
 
 // Import Routes
 const postsRoute = require('./routes/posts')
+const Post = require('./models/Post')
 //const usersRoute = require('./routes/users')
 app.use('/posts', postsRoute)
 //app.use('/users', usersRoute)
 
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/', (req, res) => {
-  res.send('hello world')
+app.get('/', async (req, res) => {
+  const posts = await Post.find()
+
+  res.render('index', { posts: posts })
 })
 
 mongoose.connect(

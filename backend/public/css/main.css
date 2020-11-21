@@ -1,0 +1,42 @@
+body {
+    background: #2c2c2c !important;
+  }
+.card-img {
+background: url('/images/mosque.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position-x: center;
+}
+
+ul{
+list-style-type:none;
+}
+
+.main-header {
+    
+}
+
+.title-header {
+    color: white;
+}
+
+.menu-header {
+    color: white;
+}
+
+.button {
+  border-radius: 20px;
+  border-color: rebeccapurple;
+  color: black;
+  padding: 15px 32px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.span-footer {
+    color: white;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Brito Variedades</title>
+
+</head>
+
+<body>
+    
+    <div class="container">
+        <%- include('components/header'); -%>
+        <div class="row">
+
+            <% if(posts.length<1){%>
+            <p class="text-white">Nenhum produto adicionado, adicione o primeiro!</p>
+            <%  } %>
+
+
+            <% posts.forEach(post=>{ %>
+            <div class="col-lg-6 card mt-2 mr-0">
+                <div class="row p-2">
+                    <div class="col-5 overflow-hidden">
+                        <img src="/uploads/<%= post.img %>" class="card-img" alt="Imagem não encontrada">
+                    </div>
+                    <div class="col-7">
+                        <div class="d-flex align-items-start">
+                            <h5 class="w-100"><b> <%= post.title %> </b></h5>
+                            <!-- display more button -->
+                        </div>
+                        <ul>
+                            <li><strong>Descrição:</strong> <%= post.description %></li>
+                            <li><strong>Preço:</strong> R$ <%= post.price %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+
+
+
+
+        </div>
+        <%- include('components/footer'); -%>
+</body>
+
+</html>

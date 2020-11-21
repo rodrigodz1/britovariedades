@@ -23,6 +23,9 @@ export default function Home(){
                             <strong>Description:</strong>
                             <p>{post.description}</p>
 
+                            <strong>Price:</strong>
+                            <p>R$ {post.price}</p>
+
                         </li>
                     ))}
                 </ul>

@@ -1,6 +1,24 @@
-const express = require('express');
+const express = require('express')
+const multer = require('multer')
 const router = express.Router();
 const Post = require('../models/Post')
+
+const productPhoto = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + file.originalname)
+    }
+})
+
+const upload = multer({ storage: productPhoto,
+                        limits: { fileSize: 1000000 },
+                        fileFilter(req,file,cb){
+                            if(!file.originalname.match(/\.(jpg|png|JPG|PNG|JPEG|jpeg)$/))
+                                return cb(new Error('This is not a correct format of the file'))
+                            cb(undefined,true)
+                        } })
 
 // GETS BACK ALL THE POSTS
 router.get('/', async (req, res) => {
@@ -13,10 +31,13 @@ router.get('/', async (req, res) => {
 })
 
 // SUBMIT A POST
-router.post('/', async (req, res) => {
+router.post('/', upload.single('productPhoto'), async (req, res) => {
+    console.log(req.file);
     const post = new Post({
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        price: req.body.price,
+        img: req.file.filename,
     })
 
     try{
