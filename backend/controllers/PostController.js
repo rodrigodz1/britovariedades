@@ -1,6 +1,5 @@
 
 const Post = require('../models/Post')
-const { put } = require('../routes')
 
 module.exports = {
     async index(req, res){
