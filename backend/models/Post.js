@@ -9,9 +9,13 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
+    price: {
+        type: Number,
+        required: true
+    },
+    img: {
+        type: String,
+        data: Buffer
     }
 })
 
